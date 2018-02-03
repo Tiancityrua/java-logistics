@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="freight.dao.bill.up_bill_dao">
+    <update id="up_ha" parameterType="freight.DO.Hawb">
+        UPDATE hawb
+        <trim prefix="set" suffixOverrides=",">
+            <if test="mawb!=null and mawb!=''">mawb=#{mawb},</if>
+            <if test="flightDate!=null and flightDate!=''">flight_date=#{flightDate},</if>
+            <if test="accInfo!=null and accInfo!=''">acc_info=#{accInfo},</if>
+            <if test="shipper!=null and shipper!=''">shipper=#{shipper},</if>
+            <if test="consignee!=null and consignee!=''">consignee=#{consignee},</if>
+            <if test="weight!=null and weight!=''">weight=#{weight},</if>
+            <if test="volume!=null and volume!=''">volume=#{volume},</if>
+            <if test="chargableWeight!=null and chargableWeight!=''">chargable_weight=#{chargableWeight},</if>
+            <if test="airDeparture!=null and airDeparture!=''">air_departure=#{airDeparture},</if>
+            <if test="airDestination!=null and airDestination!=''">air_destination=#{airDestination},</if>
+        </trim>
+        WHERE hawb=#{hawb}
+    </update>
+    <update id="up_ma" parameterType="freight.DO.Mawb">
+        UPDATE mawb
+        <trim prefix="set" suffixOverrides=",">
+            <if test="airline!=null and airline!=''">airline=#{airline},</if>
+            <if test="flightNo!=null and flightNo!=''">flight_no=#{flightNo},</if>
+            <if test="flightDate!=null and flightDate!=''">flight_date=#{flightDate},</if>
+            <if test="accInfo!=null and accInfo!=''">acc_info=#{accInfo},</if>
+            <if test="shipper!=null and shipper!=''">shipper=#{shipper},</if>
+            <if test="consignee!=null and consignee!=''">consignee=#{consignee},</if>
+            <if test="weight!=null and weight!=''">weight=#{weight},</if>
+            <if test="volume!=null and volume!=''">volume=#{volume},</if>
+            <if test="chargableWeight!=null and chargableWeight!=''">chargable_weight=#{chargableWeight},</if>
+            <if test="airDeparture!=null and airDeparture!=''">air_departure=#{airDeparture},</if>
+            <if test="airDestination!=null and airDestination!=''">air_destination=#{airDestination},</if>
+        </trim>
+        WHERE mawb=#{mawb}
+    </update>
+</mapper>
