@@ -20,7 +20,6 @@ public class select_bill {
     @ResponseBody
     @RequestMapping(value = "/select/bill/mawb",method = RequestMethod.POST,produces = "application/json")
     public Map se_ma(@RequestBody Map map, HttpServletResponse response){
-        response.setHeader("Access-Control-Allow-Origin","*");
         return service.se_ma(map);
     }
 

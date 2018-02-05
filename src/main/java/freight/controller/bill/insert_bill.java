@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>创建时间: 2018/1/22</p>
@@ -18,10 +19,9 @@ import javax.annotation.Resource;
 public class insert_bill {
     @Resource
     private in_bill_service service;
-    @CrossOrigin(origins = "http://localhost:2333")
     @ResponseBody
     @RequestMapping(value = "/insert/bill/mawb",method = RequestMethod.POST,produces = "application/json")
-    public Message in_ma(@RequestBody Mawb mawb){
+    public Message in_ma(@RequestBody Mawb mawb, HttpServletResponse response){
         String shipper=mawb.getShipper();
         String consignee=mawb.getConsignee();
         service.in_mahis(shipper,consignee);
