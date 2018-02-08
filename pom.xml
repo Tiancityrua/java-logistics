@@ -129,6 +129,11 @@
             <artifactId>java-property-utils</artifactId>
             <version>1.9</version>
         </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.7.0</version>
+        </dependency>
     </dependencies>
 
     
