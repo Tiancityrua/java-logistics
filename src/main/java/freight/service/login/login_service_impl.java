@@ -1,8 +1,13 @@
 package freight.service.login;
 
 import freight.DO.Userinfo;
+import freight.dao.login.login_dao;
+import freight.util.token.Jwt;
+import io.jsonwebtoken.Claims;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -12,13 +17,35 @@ import java.util.Map;
  */
 @Service
 public class login_service_impl implements login_service {
+    @Resource
+    private login_dao dao;
     @Override
     public Map get_token(Userinfo userinfo) {
-        return null;
+        Map map=new HashMap();
+        String role=dao.se_role(userinfo);
+        if (role!=null) {
+            String username = userinfo.getUsername();
+            String token = Jwt.createToken(username, role);
+            userinfo.setToken(token);
+            map.put("token",token);
+            return map;
+        }
+        else {
+            map.put("msg","error");
+            return map;
+        }
     }
 
     @Override
     public Map get_role(String token) {
-        return null;
+        Map map=new HashMap();
+        try {
+            Claims claims = Jwt.praseToken(token);
+            String role = claims.get("role", String.class);
+            map.put("role",role);
+            return map;
+        }catch (Exception e) {
+            return null;
+        }
     }
 }
