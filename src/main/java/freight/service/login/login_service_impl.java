@@ -28,10 +28,12 @@ public class login_service_impl implements login_service {
             String token = Jwt.createToken(username, role);
             userinfo.setToken(token);
             map.put("token",token);
+            map.put("code",200);
             return map;
         }
         else {
-            map.put("msg","error");
+            map.put("code",401);
+            map.put("token","");
             return map;
         }
     }
@@ -43,6 +45,8 @@ public class login_service_impl implements login_service {
             Claims claims = Jwt.praseToken(token);
             String role = claims.get("role", String.class);
             map.put("role",role);
+            String usernmae=claims.get("username",String.class);
+            map.put("username",usernmae);
             return map;
         }catch (Exception e) {
             return null;

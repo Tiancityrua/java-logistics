@@ -10,13 +10,113 @@
     <insert id="in_haconsignee" parameterType="String">
         INSERT IGNORE INTO haconsignee VALUES (#{consignee})
     </insert>
+
     <insert id="in_mawb" parameterType="freight.DO.Mawb">
-        INSERT IGNORE INTO mawb VALUES (#{mawb},#{airline},#{flightNo},#{flightDate},#{accInfo},#{shipper},#{consignee},#{weight},#{volume},#{chargableWeight},#{airDeparture},#{airDestination})
+        INSERT IGNORE INTO mawb
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            mawb,
+            <if test="shipperNo!= null and shipperNo!=''">shipper_no,</if>
+            shipper,
+            <if test="consigneeNo!= null and consigneeNo!=''">consignee_no,</if>
+            consignee,
+            <if test="issuedBy!= null and issuedBy!=''">issued_by,</if>
+            <if test="issuingCarrier!= null and issuingCarrier!=''">issuing_carrier,</if>
+            <if test="agentIata!= null and agentIata!=''">agent_iata,</if>
+            <if test="accountNo!= null and accountNo!=''">account_no,</if>
+            air_departure,air_dest,
+            <if test="to1!= null and to1!=''">to1,</if>
+            <if test="by1!= null and by1!=''">by1,</if>
+            <if test="to2!= null and to2!=''">to2,</if>
+            <if test="by2!= null and by2!=''">by2,</if>
+            <if test="to3!= null and to3!=''">to3,</if>
+            <if test="by3!= null and to3!=''">by3,</if>
+            flight_no,
+            <if test="flightDate!= null and flightDate!=''">flight_date,</if>
+            account_info,currency,
+            <if test="chgCode!= null and chgCode!=''">chg_code,</if>
+            wt_val,other,declared_carriage,declared_customs,amount_insurance,handling_info,
+            <if test="sci!= null and sci!=''">sci,</if>
+            no_pieces,gross_weight,total_pieces,total_weight,kg_lb,
+            <if test="rateClass!= null and rateClass!=''">rate_class,</if>
+            item_no,charge_weight,rate,total1,total2,nature,
+            <if test="weightPpd!= null and weightPpd!=''">weight_ppd,</if>
+            <if test="weightColl!= null and weightColl!=''">weight_coll,</if>
+            <if test="valPpd!= null and valPpd!=''">val_ppd,</if>
+            <if test="valColl!= null and valColl!=''">val_coll,</if>
+            <if test="taxPpd!= null and taxPpd!=''">tax_ppd,</if>
+            <if test="taxColl!= null and taxColl!=''">tax_coll,</if>
+            <if test="agentPpd!= null and agentPpd!=''">agent_ppd,</if>
+            <if test="agentColl!= null and agentColl!=''">agent_coll,</if>
+            <if test="carrierPpd!= null and carrierPpd!=''">carrier_ppd,</if>
+            <if test="carrierColl!= null and carrierColl!=''">carrier_coll,</if>
+            <if test="totalPpd!= null and totalPpd!=''">total_ppd,</if>
+            <if test="totalColl!= null and totalColl!=''">total_coll,</if>
+            <if test="currencyRates!= null and currencyRates!=''">currency_rates,</if>
+            <if test="destCurrency!= null and destCurrency!=''">dest_currency,</if>
+            <if test="chargesDest!= null and chargesDest!=''">charges_dest,</if>
+            <if test="totalcollCharges!= null and totalcollCharges!=''">totalcoll_charges,</if>
+            <if test="otherCharges!= null and otherCharges!=''">other_charges,</if>
+            <if test="shipperCertifies!= null and shipperCertifies!=''">shipper_certifies,</if>
+            excuted_on,place,
+            <if test="signatureShipper!= null and signatureShipper!=''">signature_shipper,</if>
+            <if test="signatureCarrier!= null and signatureCarrier!=''">signature_carrier,</if>
+        </trim>
+
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            #{mawb},
+            <if test="shipperNo!= null and shipperNo!=''">#{shipperNo},</if>
+            #{shipper},
+            <if test="consigneeNo!= null and consigneeNo!=''">#{consigneeNo},</if>
+            #{consignee},
+            <if test="issuedBy!= null and issuedBy!=''">#{issuedBy},</if>
+            <if test="issuingCarrier!= null and issuingCarrier!=''">#{issuingCarrier},</if>
+            <if test="agentIata!= null and agentIata!=''">#{agentIata},</if>
+            <if test="accountNo!= null and accountNo!=''">#{accountNo},</if>
+            #{airDeparture},#{airDest},
+            <if test="to1!= null and to1!=''">#{to1},</if>
+            <if test="by1!= null and by1!=''">#{by1},</if>
+            <if test="to2!= null and to2!=''">#{to2},</if>
+            <if test="by2!= null and by2!=''">#{by2},</if>
+            <if test="to3!= null and to3!=''">#{to3},</if>
+            <if test="by3!= null and to3!=''">#{by3},</if>
+            #{flightNo},
+            <if test="flightDate!= null and flightDate!=''">#{flightDate},</if>
+            #{accountInfo},#{currency},
+            <if test="chgCode!= null and chgCode!=''">#{chgCode},</if>
+            #{wtVal},#{other},#{declaredCarriage},#{declaredCustoms},#{amountInsurance},#{handlingInfo},
+            <if test="sci!= null and sci!=''">#{sci},</if>
+            #{noPieces},#{grossWeight},#{totalPieces},#{totalWeight},#{kgLb},
+            <if test="rateClass!= null and rateClass!=''">#{rateClass},</if>
+            #{itemNo},#{chargeWeight},#{rate},#{total1},#{total2},#{nature},
+            <if test="weightPpd!= null and weightPpd!=''">#{weightPpd},</if>
+            <if test="weightColl!= null and weightColl!=''">#{weightColl},</if>
+            <if test="valPpd!= null and valPpd!=''">#{valPpd},</if>
+            <if test="valColl!= null and valColl!=''">#{valColl},</if>
+            <if test="taxPpd!= null and taxPpd!=''">#{taxPpd},</if>
+            <if test="taxColl!= null and taxColl!=''">#{taxColl},</if>
+            <if test="agentPpd!= null and agentPpd!=''">#{agentPpd},</if>
+            <if test="agentColl!= null and agentColl!=''">#{agentColl},</if>
+            <if test="carrierPpd!= null and carrierPpd!=''">#{carrierPpd},</if>
+            <if test="carrierColl!= null and carrierColl!=''">#{carrierColl},</if>
+            <if test="totalPpd!= null and totalPpd!=''">#{totalPpd},</if>
+            <if test="totalColl!= null and totalColl!=''">#{totalColl},</if>
+            <if test="currencyRates!= null and currencyRates!=''">#{currencyRates},</if>
+            <if test="destCurrency!= null and destCurrency!=''">#{destCurrency},</if>
+            <if test="chargesDest!= null and chargesDest!=''">#{chargesDest},</if>
+            <if test="totalcollCharges!= null and totalcollCharges!=''">#{totalcollCharges},</if>
+            <if test="otherCharges!= null and otherCharges!=''">#{otherCharges},</if>
+            <if test="shipperCertifies!= null and shipperCertifies!=''">#{shipperCertifies},</if>
+            #{excutedOn},#{place},
+            <if test="signatureShipper!= null and signatureShipper!=''">#{signatureShipper},</if>
+            <if test="signatureCarrier!= null and signatureCarrier!=''">#{signatureCarrier},</if>
+        </trim>
     </insert>
+
     <insert id="in_mashipper" parameterType="String">
         INSERT IGNORE INTO mashipper VALUES (#{shipper})
     </insert>
     <insert id="in_maconsignee" parameterType="String">
         INSERT IGNORE INTO maconsignee VALUES (#{consignee})
     </insert>
+
 </mapper>
