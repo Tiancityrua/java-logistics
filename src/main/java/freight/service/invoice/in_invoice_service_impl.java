@@ -1,12 +1,14 @@
 package freight.service.invoice;
 
 import freight.DO.Delivery;
+import freight.DO.Detail;
 import freight.DO.Invoice;
 import freight.DO.Message;
 import freight.dao.invoice.in_invoice_dao;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,41 +35,22 @@ public class in_invoice_service_impl implements in_invoice_service {
     }
 
     @Override
-    public Message in_duty(Invoice invoice) {
-            int num=dao.in_duty(invoice);
-            if (num!=0){
-                Message msg=new Message("success","税务发票插入成功");
-                return msg;
-            }
-            else {
-                Message msg=new Message("error","税务发票插入失败，请不要重复插入相同发票号");
-                return msg;
-            }
-    }
-
-    @Override
-    public Message in_freight(Invoice invoice) {
-        int num=dao.in_freight(invoice);
+    public Message in_invoice(Invoice invoice) {
+        int num=dao.in_invoice(invoice);
         if (num!=0){
-            Message msg=new Message("success","运费发票插入成功");
+            Message msg=new Message("success","发票插入成功");
             return msg;
         }
         else {
-            Message msg=new Message("error","运费发票插入失败，请不要重复插入相同发票号");
+            Message msg=new Message("error","发票插入失败，请不要重复插入相同分单号");
             return msg;
         }
     }
 
     @Override
-    public Message in_log(Invoice invoice) {
-        int num=dao.in_log(invoice);
-        if(num!=0){
-            Message msg=new Message("success","物流发票插入成功");
-            return msg;
-        }
-        else {
-            Message msg=new Message("error","物流发票插入失败，请不要重复插入相同发票号");
-            return msg;
-        }
+    public Message in_detail(List detail) {
+        int num=dao.in_detail(detail);
+        Message msg=new Message("success","发票详情插入成功");
+        return msg;
     }
 }

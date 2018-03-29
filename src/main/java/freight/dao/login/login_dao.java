@@ -10,6 +10,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface login_dao {
-//    int up_token(Userinfo userinfo);
     String se_role(Userinfo userinfo);
 }

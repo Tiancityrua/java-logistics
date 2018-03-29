@@ -8,8 +8,7 @@ import java.util.Map;
  * ====================================================================<br>
  */
 public interface se_invoice_service {
-    Map se_duty(Map map);
-    Map se_freight(Map map);
-    Map se_log(Map map);
+    Map se_invoice(Map map);
     Map se_delivery(Map map);
+    Map se_detail(Map map);
 }

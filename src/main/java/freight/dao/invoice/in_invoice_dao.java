@@ -1,9 +1,11 @@
 package freight.dao.invoice;
 
 import freight.DO.Delivery;
+import freight.DO.Detail;
 import freight.DO.Invoice;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,7 +16,6 @@ import java.util.Map;
 @Repository
 public interface in_invoice_dao {
     int in_delivery(Delivery delivery);
-    int in_duty(Invoice invoice);
-    int in_freight(Invoice invoice);
-    int in_log(Invoice invoice);
+    int in_invoice(Invoice invoice);
+    int in_detail(List list);
 }

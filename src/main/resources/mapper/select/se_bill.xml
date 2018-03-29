@@ -4,12 +4,14 @@
     <select id="se_mawb" parameterType="Map" resultType="freight.DO.Mawb">
         SELECT * FROM mawb WHERE 1=1
         <if test="mawb!=null and mawb!=''">AND mawb=#{mawb}</if>
-        <if test="airline!=null and airline!=''">AND airline=#{airline}</if>
         <if test="flightNo!=null and flightNo!=''">AND flight_no=#{flightNo}</if>
         <if test="shipper!=null and shipper!=''">AND shipper=#{shipper}</if>
         <if test="consignee!=null and consignee!=''">AND consignee=#{consignee}</if>
         <if test="date1!=null and date1!=''">AND flight_date &gt;= #{date1}</if>
         <if test="date2!=null and date2!=''">AND flight_date &lt;= #{date2}</if>
+        <if test="airDeparture!=null and airDeparture!=''">AND air_departure=#{airDeparture}</if>
+        <if test="excutedOn!=null and excutedOn!=''">AND excuted_on=#{excutedOn}</if>
+        <if test="place!=null and place!=''">AND place=#{place}</if>
     </select>
     <select id="se_hawb" parameterType="Map" resultType="freight.DO.Hawb">
         SELECT * FROM hawb WHERE 1=1

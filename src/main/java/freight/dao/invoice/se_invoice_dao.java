@@ -12,8 +12,7 @@ import java.util.Map;
  */
 @Repository
 public interface se_invoice_dao {
-    List<Map> se_duty(Map map);
-    List<Map> se_freight(Map map);
-    List<Map> se_log(Map map);
+    List<Map> se_invoice(Map map);
     List<Map> se_delivery(Map map);
+    List<Map> se_detail(Map map);
 }

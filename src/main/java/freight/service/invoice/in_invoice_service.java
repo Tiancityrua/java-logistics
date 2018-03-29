@@ -1,9 +1,11 @@
 package freight.service.invoice;
 
 import freight.DO.Delivery;
+import freight.DO.Detail;
 import freight.DO.Invoice;
 import freight.DO.Message;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,7 +15,6 @@ import java.util.Map;
  */
 public interface in_invoice_service {
     Message in_delivery(Delivery delivery);
-    Message in_duty(Invoice invoice);
-    Message in_freight(Invoice invoice);
-    Message in_log(Invoice invoice);
+    Message in_invoice(Invoice invoice);
+    Message in_detail(List list);
 }

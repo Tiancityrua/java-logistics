@@ -7,20 +7,14 @@ package freight.DO;
  */
 public class Invoice {
     private String invoiceNo;
-    private String towho;
-    private String invoiceDate;
+    private String date;
+    private String terms;
+    private String invoiceTo;
     private String billLaden;
     private String origin;
     private String dstn;
-    private String natureQuantity;
-    private String freight;
-    private String duty;
-    private String vat;
-    private String custom;
-    private String handling;
-    private String delivery;
-    private String profit;
-    private String all;
+    private String nature;
+    private String total;
 
     public String getInvoiceNo() {
         return invoiceNo;
@@ -30,20 +24,28 @@ public class Invoice {
         this.invoiceNo = invoiceNo;
     }
 
-    public String getTowho() {
-        return towho;
+    public String getDate() {
+        return date;
     }
 
-    public void setTowho(String towho) {
-        this.towho = towho;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getInvoiceDate() {
-        return invoiceDate;
+    public String getTerms() {
+        return terms;
     }
 
-    public void setInvoiceDate(String invoiceDate) {
-        this.invoiceDate = invoiceDate;
+    public void setTerms(String terms) {
+        this.terms = terms;
+    }
+
+    public String getInvoiceTo() {
+        return invoiceTo;
+    }
+
+    public void setInvoiceTo(String invoiceTo) {
+        this.invoiceTo = invoiceTo;
     }
 
     public String getBillLaden() {
@@ -70,75 +72,19 @@ public class Invoice {
         this.dstn = dstn;
     }
 
-    public String getNatureQuantity() {
-        return natureQuantity;
+    public String getNature() {
+        return nature;
     }
 
-    public void setNatureQuantity(String natureQuantity) {
-        this.natureQuantity = natureQuantity;
+    public void setNature(String nature) {
+        this.nature = nature;
     }
 
-    public String getFreight() {
-        return freight;
+    public String getTotal() {
+        return total;
     }
 
-    public void setFreight(String freight) {
-        this.freight = freight;
-    }
-
-    public String getDuty() {
-        return duty;
-    }
-
-    public void setDuty(String duty) {
-        this.duty = duty;
-    }
-
-    public String getVat() {
-        return vat;
-    }
-
-    public void setVat(String vat) {
-        this.vat = vat;
-    }
-
-    public String getCustom() {
-        return custom;
-    }
-
-    public void setCustom(String custom) {
-        this.custom = custom;
-    }
-
-    public String getHandling() {
-        return handling;
-    }
-
-    public void setHandling(String handling) {
-        this.handling = handling;
-    }
-
-    public String getDelivery() {
-        return delivery;
-    }
-
-    public void setDelivery(String delivery) {
-        this.delivery = delivery;
-    }
-
-    public String getProfit() {
-        return profit;
-    }
-
-    public void setProfit(String profit) {
-        this.profit = profit;
-    }
-
-    public String getAll() {
-        return all;
-    }
-
-    public void setAll(String all) {
-        this.all = all;
+    public void setTotal(String total) {
+        this.total = total;
     }
 }

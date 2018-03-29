@@ -17,25 +17,11 @@ import java.util.Map;
 public class se_invoice_service_impl implements se_invoice_service {
     @Resource
     private se_invoice_dao dao;
-    @Override
-    public Map se_duty(Map map) {
-        List list=dao.se_duty(map);
-        Map result=new HashMap<String, List<Map>>();
-        result.put("data",list);
-        return result;
-    }
+
 
     @Override
-    public Map se_freight(Map map) {
-        List list=dao.se_freight(map);
-        Map result=new HashMap<String, List<Map>>();
-        result.put("data",list);
-        return result;
-    }
-
-    @Override
-    public Map se_log(Map map) {
-        List list=dao.se_log(map);
+    public Map se_invoice(Map map) {
+        List list=dao.se_invoice(map);
         Map result=new HashMap<String, List<Map>>();
         result.put("data",list);
         return result;
@@ -44,6 +30,14 @@ public class se_invoice_service_impl implements se_invoice_service {
     @Override
     public Map se_delivery(Map map) {
         List list=dao.se_delivery(map);
+        Map result=new HashMap<String, List<Map>>();
+        result.put("data",list);
+        return result;
+    }
+
+    @Override
+    public Map se_detail(Map map) {
+        List list=dao.se_detail(map);
         Map result=new HashMap<String, List<Map>>();
         result.put("data",list);
         return result;

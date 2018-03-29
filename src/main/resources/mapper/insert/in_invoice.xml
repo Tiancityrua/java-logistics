@@ -4,13 +4,13 @@
     <insert id="in_delivery" parameterType="freight.DO.Delivery">
         INSERT IGNORE INTO deliverynote VALUES (#{hawb},#{date},#{pieces},#{weight},#{deliveryAdd})
     </insert>
-    <insert id="in_duty" parameterType="freight.DO.Invoice">
-        INSERT IGNORE INTO duty_invoice VALUES (#{invoiceNo},#{towho},#{invoiceDate},#{billLaden},#{origin},#{dstn},#{natureQuantity},#{duty},#{vat},#{all})
+    <insert id="in_invoice" parameterType="freight.DO.Invoice">
+        INSERT IGNORE INTO invoice VALUES (#{invoiceNo},#{date},#{terms},#{invoiceTo},#{billLaden},#{origin},#{dstn},#{nature},#{total})
     </insert>
-    <insert id="in_freight" parameterType="freight.DO.Invoice">
-        INSERT IGNORE INTO freight_invoice VALUES (#{invoiceNo},#{towho},#{invoiceDate},#{billLaden},#{origin},#{dstn},#{natureQuantity},#{freight},#{all})
-    </insert>
-    <insert id="in_log" parameterType="freight.DO.Invoice">
-        INSERT IGNORE INTO logistics_invoice VALUES (#{invoiceNo},#{towho},#{invoiceDate},#{billLaden},#{origin},#{dstn},#{natureQuantity},#{custom},#{handling},#{delivery},#{profit},#{all})
+    <insert id="in_detail" parameterType="java.util.List">
+        INSERT INTO invoice_detail(invoice_no,description,amount) VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (#{item.invoiceNo},#{item.description},#{item.amount})
+    </foreach>
     </insert>
 </mapper>

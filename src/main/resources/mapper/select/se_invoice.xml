@@ -1,34 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="freight.dao.invoice.se_invoice_dao">
-    <select id="se_duty" parameterType="Map" resultType="freight.DO.Invoice">
-        SELECT * FROM duty_invoice WHERE 1=1
+    <select id="se_invoice" parameterType="Map" resultType="freight.DO.Invoice">
+        SELECT * FROM invoice WHERE 1=1
         <if test="invoiceNo!=null and invoiceNo!=''">AND invoice_no=#{invoiceNo}</if>
-        <if test="date1!=null and date1!=''">AND invoice_date &gt;=#{date1}</if>
-        <if test="date2!=null and date2!=''">AND invoice_date &lt;=#{date2}</if>
-        <if test="towho!=null and towho!=''">AND towho=#{towho}</if>
+        <if test="date1!=null and date1!=''">AND date &gt;=#{date1}</if>
+        <if test="date2!=null and date2!=''">AND date &lt;=#{date2}</if>
+        <if test="invoiceTo!=null and invoiceTo!=''">AND invoice_to=#{invoiceTo}</if>
         <if test="billLaden!=null and billLaden!=''">AND bill_laden=#{billLaden}</if>
-    </select>
-    <select id="se_freight" parameterType="Map" resultType="freight.DO.Invoice">
-        SELECT * FROM freight_invoice WHERE 1=1
-        <if test="invoiceNo!=null and invoiceNo!=''">AND invoice_no=#{invoiceNo}</if>
-        <if test="date1!=null and date1!=''">AND invoice_date &gt;=#{date1}</if>
-        <if test="date2!=null and date2!=''">AND invoice_date &lt;=#{date2}</if>
-        <if test="towho!=null and towho!=''">AND towho=#{towho}</if>
-        <if test="billLaden!=null and billLaden!=''">AND bill_laden=#{billLaden}</if>
-    </select>
-    <select id="se_log" parameterType="Map" resultType="freight.DO.Invoice">
-        SELECT * FROM logistics_invoice WHERE 1=1
-        <if test="invoiceNo!=null and invoiceNo!=''">AND invoice_no=#{invoiceNo}</if>
-        <if test="date1!=null and date1!=''">AND invoice_date &gt;=#{date1}</if>
-        <if test="date2!=null and date2!=''">AND invoice_date &lt;=#{date2}</if>
-        <if test="towho!=null and towho!=''">AND towho=#{towho}</if>
-        <if test="billLaden!=null and billLaden!=''">AND bill_laden=#{billLaden}</if>
+        <if test="origin!=null and origin!=''">AND origin =#{origin}</if>
+        <if test="dstn!=null and dstn!=''">AND dstn =#{dstn}</if>
     </select>
     <select id="se_delivery" parameterType="Map" resultType="freight.DO.Delivery">
         SELECT * FROM deliverynote WHERE 1=1
         <if test="hawb!=null and hawb!=''">AND hawb=#{hawb}</if>
         <if test="date1!=null and date1!=''">AND date &gt;=#{date1}</if>
         <if test="date2!=null and date2!=''">AND date &lt;=#{date2}</if>
+    </select>
+    <select id="se_detail" parameterType="Map" resultType="freight.DO.Detail">
+        SELECT * FROM invoice_detail WHERE invoice_no=#{invoiceNo}
     </select>
 </mapper>
