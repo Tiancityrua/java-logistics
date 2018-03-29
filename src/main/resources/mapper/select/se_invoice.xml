@@ -16,6 +16,7 @@
         <if test="hawb!=null and hawb!=''">AND hawb=#{hawb}</if>
         <if test="date1!=null and date1!=''">AND date &gt;=#{date1}</if>
         <if test="date2!=null and date2!=''">AND date &lt;=#{date2}</if>
+        <if test="type!=null and type!=''">AND type =#{type}</if>
     </select>
     <select id="se_detail" parameterType="Map" resultType="freight.DO.Detail">
         SELECT * FROM invoice_detail WHERE invoice_no=#{invoiceNo}

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="freight.dao.invoice.in_invoice_dao">
     <insert id="in_delivery" parameterType="freight.DO.Delivery">
-        INSERT IGNORE INTO deliverynote VALUES (#{hawb},#{date},#{pieces},#{weight},#{deliveryAdd})
+        INSERT IGNORE INTO deliverynote VALUES(#{date},#{hawb},#{pieces},#{weight},#{address},#{name},#{signed},#{dated},#{type})
     </insert>
     <insert id="in_invoice" parameterType="freight.DO.Invoice">
         INSERT IGNORE INTO invoice VALUES (#{invoiceNo},#{date},#{terms},#{invoiceTo},#{billLaden},#{origin},#{dstn},#{nature},#{total})

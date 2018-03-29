@@ -6,19 +6,15 @@ package freight.DO;
  * ====================================================================<br>
  */
 public class Delivery {
-    private String hawb;
     private String date;
+    private String hawb;
     private String pieces;
     private String weight;
-    private String deliveryAdd;
-
-    public String getHawb() {
-        return hawb;
-    }
-
-    public void setHawb(String hawb) {
-        this.hawb = hawb;
-    }
+    private String address;
+    private String name;
+    private String signed;
+    private String dated;
+    private String type;
 
     public String getDate() {
         return date;
@@ -26,6 +22,14 @@ public class Delivery {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getHawb() {
+        return hawb;
+    }
+
+    public void setHawb(String hawb) {
+        this.hawb = hawb;
     }
 
     public String getPieces() {
@@ -44,11 +48,43 @@ public class Delivery {
         this.weight = weight;
     }
 
-    public String getDeliveryAdd() {
-        return deliveryAdd;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDeliveryAdd(String deliveryAdd) {
-        this.deliveryAdd = deliveryAdd;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSigned() {
+        return signed;
+    }
+
+    public void setSigned(String signed) {
+        this.signed = signed;
+    }
+
+    public String getDated() {
+        return dated;
+    }
+
+    public void setDated(String dated) {
+        this.dated = dated;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -25,11 +25,11 @@ public class in_invoice_service_impl implements in_invoice_service {
     public Message in_delivery(Delivery delivery) {
         int num=dao.in_delivery(delivery);
         if (num!=0){
-            Message msg=new Message("success","送货单插入成功");
+            Message msg=new Message("success","货单插入成功");
             return msg;
         }
         else {
-            Message msg=new Message("error","送货单插入失败，请不要重复插入相同分单号");
+            Message msg=new Message("error","货单插入失败，该分单号已包含两个货单");
             return msg;
         }
     }
