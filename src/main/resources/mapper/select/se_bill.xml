@@ -10,6 +10,7 @@
         <if test="date1!=null and date1!=''">AND flight_date &gt;= #{date1}</if>
         <if test="date2!=null and date2!=''">AND flight_date &lt;= #{date2}</if>
         <if test="airDeparture!=null and airDeparture!=''">AND air_departure=#{airDeparture}</if>
+        <if test="airDest!=null and airDest!=''">AND air_dest=#{airDest}</if>
         <if test="excutedOn!=null and excutedOn!=''">AND excuted_on=#{excutedOn}</if>
         <if test="place!=null and place!=''">AND place=#{place}</if>
     </select>
