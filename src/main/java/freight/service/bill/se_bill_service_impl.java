@@ -64,4 +64,12 @@ public class se_bill_service_impl implements se_bill_service {
         map.put("data",list);
         return map;
     }
+
+    @Override
+    public Map se_ma_place(Map map) {
+        List list=dao.se_mawb_place(map);
+        Map result=new HashMap<String,List<Map>>();
+        result.put("data",list);
+        return result;
+    }
 }

@@ -35,4 +35,7 @@
     <select id="se_haconsignee" resultType="java.lang.String">
         SELECT consignee FROM haconsignee
     </select>
+    <select id="se_mawb_place" parameterType="Map" resultType="Map">
+        SELECT air_departure,air_dest FROM mawb WHERE mawb=#{mawb}
+    </select>
 </mapper>

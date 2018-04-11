@@ -18,4 +18,5 @@ public interface se_bill_dao {
     List<Map> se_mawb(Map map);
     List<String> se_mashipper();
     List<String> se_maconsignee();
+    List<String> se_mawb_place(Map map);
 }

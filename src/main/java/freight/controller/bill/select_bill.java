@@ -19,7 +19,7 @@ public class select_bill {
     private se_bill_service service;
     @ResponseBody
     @RequestMapping(value = "/select/bill/mawb",method = RequestMethod.POST,produces = "application/json")
-    public Map se_ma(@RequestBody Map map, HttpServletResponse response){
+    public Map se_ma(@RequestBody Map map){
         return service.se_ma(map);
     }
 
@@ -33,6 +33,12 @@ public class select_bill {
     @RequestMapping(value = "/select/bill/maconsignee",method = RequestMethod.GET,produces = "application/json")
     public Map se_mahis_consignee(){
         return service.se_mahis_consignee();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/select/bill/maplace",method = RequestMethod.POST,produces = "application/json")
+    public Map se_ma_place(@RequestBody Map map){
+        return service.se_ma_place(map);
     }
 
     @ResponseBody
