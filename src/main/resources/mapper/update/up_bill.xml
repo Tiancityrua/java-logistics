@@ -20,17 +20,51 @@
     <update id="up_ma" parameterType="freight.DO.Mawb">
         UPDATE mawb
         <trim prefix="set" suffixOverrides=",">
-            <if test="airline!=null and airline!=''">airline=#{airline},</if>
-            <if test="flightNo!=null and flightNo!=''">flight_no=#{flightNo},</if>
-            <if test="flightDate!=null and flightDate!=''">flight_date=#{flightDate},</if>
-            <if test="accInfo!=null and accInfo!=''">acc_info=#{accInfo},</if>
-            <if test="shipper!=null and shipper!=''">shipper=#{shipper},</if>
-            <if test="consignee!=null and consignee!=''">consignee=#{consignee},</if>
-            <if test="weight!=null and weight!=''">weight=#{weight},</if>
-            <if test="volume!=null and volume!=''">volume=#{volume},</if>
-            <if test="chargableWeight!=null and chargableWeight!=''">chargable_weight=#{chargableWeight},</if>
-            <if test="airDeparture!=null and airDeparture!=''">air_departure=#{airDeparture},</if>
-            <if test="airDestination!=null and airDestination!=''">air_destination=#{airDestination},</if>
+            <if test="shipperNo!= null and shipperNo!=''">shipper_no=#{shipperNo},</if>
+            shipper=#{shipper},
+            <if test="consigneeNo!= null and consigneeNo!=''">consignee_no=#{consigneeNo},</if>
+            consignee=#{consignee},
+            <if test="issuedBy!= null and issuedBy!=''">issued_by=#{issuedBy},</if>
+            <if test="issuingCarrier!= null and issuingCarrier!=''">issuing_carrier=#{issuingCarrier},</if>
+            <if test="agentIata!= null and agentIata!=''">agent_iata=#{agentIata},</if>
+            <if test="accountNo!= null and accountNo!=''">account_no=#{accountNo},</if>
+            air_departure=#{airDeparture},air_dest=#{airDest},
+            <if test="to1!= null and to1!=''">to1=#{to1},</if>
+            <if test="by1!= null and by1!=''">by1=#{by1},</if>
+            <if test="to2!= null and to2!=''">to2=#{to2},</if>
+            <if test="by2!= null and by2!=''">by2=#{by2},</if>
+            <if test="to3!= null and to3!=''">to3=#{to3},</if>
+            <if test="by3!= null and to3!=''">by3=#{by3},</if>
+            flight_no=#{flightNo},
+            <if test="flightDate!= null and flightDate!=''">flight_date=#{flightDate},</if>
+            account_info=#{accountInfo},currency=#{currency},
+            <if test="chgCode!= null and chgCode!=''">chg_code=#{chgCode},</if>
+            wt_val=#{wtVal},other=#{other},declared_carriage=#{declaredCarriage},declared_customs=#{declaredCustoms},amount_insurance=#{amountInsurance},handling_info=#{handlingInfo},
+            <if test="sci!= null and sci!=''">sci=#{sci},</if>
+            no_pieces=#{noPieces},gross_weight=#{grossWeight},total_pieces=#{totalPieces},total_weight=#{totalWeight},kg_lb=#{kgLb},
+            <if test="rateClass!= null and rateClass!=''">rate_class=#{rateClass},</if>
+            item_no=#{itemNo},charge_weight=#{chargeWeight},rate=#{rate},total1=#{total1},total2=#{total2},nature=#{nature},
+            <if test="weightPpd!= null and weightPpd!=''">weight_ppd=#{weightPpd},</if>
+            <if test="weightColl!= null and weightColl!=''">weight_coll=#{weightColl},</if>
+            <if test="valPpd!= null and valPpd!=''">val_ppd=#{valPpd},</if>
+            <if test="valColl!= null and valColl!=''">val_coll=#{valColl},</if>
+            <if test="taxPpd!= null and taxPpd!=''">tax_ppd=#{taxPpd},</if>
+            <if test="taxColl!= null and taxColl!=''">tax_coll=#{taxColl},</if>
+            <if test="agentPpd!= null and agentPpd!=''">agent_ppd=#{agentPpd},</if>
+            <if test="agentColl!= null and agentColl!=''">agent_coll=#{agentColl},</if>
+            <if test="carrierPpd!= null and carrierPpd!=''">carrier_ppd=#{carrierPpd},</if>
+            <if test="carrierColl!= null and carrierColl!=''">carrier_coll=#{carrierColl},</if>
+            <if test="totalPpd!= null and totalPpd!=''">total_ppd=#{totalPpd},</if>
+            <if test="totalColl!= null and totalColl!=''">total_coll=#{totalColl},</if>
+            <if test="currencyRates!= null and currencyRates!=''">currency_rates=#{currencyRates},</if>
+            <if test="destCurrency!= null and destCurrency!=''">dest_currency=#{destCurrency},</if>
+            <if test="chargesDest!= null and chargesDest!=''">charges_dest=#{chargesDest},</if>
+            <if test="totalcollCharges!= null and totalcollCharges!=''">totalcoll_charges=#{totalcollCharges},</if>
+            <if test="otherCharges!= null and otherCharges!=''">other_charges=#{otherCharges},</if>
+            <if test="shipperCertifies!= null and shipperCertifies!=''">shipper_certifies=#{shipperCertifies},</if>
+            excuted_on=#{excutedOn},place=#{place},
+            <if test="signatureShipper!= null and signatureShipper!=''">signature_shipper=#{signatureShipper},</if>
+            <if test="signatureCarrier!= null and signatureCarrier!=''">signature_carrier=#{signatureCarrier},</if>
         </trim>
         WHERE mawb=#{mawb}
     </update>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="freight.dao.invoice.up_invoice_dao">
+    <update id="up_delivery" parameterType="freight.DO.Delivery">
+        UPDATE deliverynote SET date=#{date},pieces=#{pieces},weight=#{weight},address=#{address},name=#{name},signed=#{signed},
+        dated=#{dated} WHERE hawb=#{hawb} and type=#{type}
+    </update>
+
+    <update id="up_invoice" parameterType="freight.DO.Invoice">
+        UPDATE invoice SET date=#{date},terms=#{terms},invoice_to=#{invoiceTo},bill_laden=#{billLaden},origin=#{origin},
+        dstn=#{dstn},nature=#{nature},total=#{total} WHERE invoice_no=#{invoiceNo}
+    </update>
+
+    <update id="up_detail" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index"  separator=";">
+            UPDATE invoice_detail
+            <set>amount=#{item.amount}</set>
+            WHERE invoice_no=#{item.invoiceNo} AND description=#{item.description}
+        </foreach>
+    </update>
+</mapper>
