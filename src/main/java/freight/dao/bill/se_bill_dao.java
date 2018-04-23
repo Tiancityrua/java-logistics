@@ -15,8 +15,10 @@ public interface se_bill_dao {
     List<Map> se_hawb(Map map);
     List<String> se_hashipper();
     List<String> se_haconsignee();
+    List<String> se_hawb_place(Map map);
     List<Map> se_mawb(Map map);
     List<String> se_mashipper();
     List<String> se_maconsignee();
     List<String> se_mawb_place(Map map);
+    List<String> se_same(Map map);
 }

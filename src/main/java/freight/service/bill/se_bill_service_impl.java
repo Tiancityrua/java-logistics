@@ -42,6 +42,14 @@ public class se_bill_service_impl implements se_bill_service {
     }
 
     @Override
+    public Map se_ha_place(Map map) {
+        List list=dao.se_hawb_place(map);
+        Map result=new HashMap<String,List<Map>>();
+        result.put("data",list);
+        return result;
+    }
+
+    @Override
     public Map se_ma(Map map) {
         List list=dao.se_mawb(map);
         Map result=new HashMap<String,List<Map>>();
@@ -68,6 +76,14 @@ public class se_bill_service_impl implements se_bill_service {
     @Override
     public Map se_ma_place(Map map) {
         List list=dao.se_mawb_place(map);
+        Map result=new HashMap<String,List<Map>>();
+        result.put("data",list);
+        return result;
+    }
+
+    @Override
+    public Map se_same(Map map) {
+        List list=dao.se_same(map);
         Map result=new HashMap<String,List<Map>>();
         result.put("data",list);
         return result;

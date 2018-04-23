@@ -18,10 +18,15 @@
         SELECT * FROM hawb WHERE 1=1
         <if test="hawb!=null and hawb!=''">AND hawb=#{hawb}</if>
         <if test="mawb!=null and mawb!=''">AND mawb=#{mawb}</if>
+        <if test="flightNo!=null and flightNo!=''">AND flight_no=#{flightNo}</if>
         <if test="shipper!=null and shipper!=''">AND shipper=#{shipper}</if>
         <if test="consignee!=null and consignee!=''">AND consignee=#{consignee}</if>
         <if test="date1!=null and date1!=''">AND flight_date &gt;= #{date1}</if>
         <if test="date2!=null and date2!=''">AND flight_date &lt;= #{date2}</if>
+        <if test="airDeparture!=null and airDeparture!=''">AND air_departure=#{airDeparture}</if>
+        <if test="airDest!=null and airDest!=''">AND air_dest=#{airDest}</if>
+        <if test="excutedOn!=null and excutedOn!=''">AND excuted_on=#{excutedOn}</if>
+        <if test="place!=null and place!=''">AND place=#{place}</if>
     </select>
     <select id="se_mashipper" resultType="java.lang.String">
         SELECT shipper FROM mashipper
@@ -37,5 +42,13 @@
     </select>
     <select id="se_mawb_place" parameterType="Map" resultType="Map">
         SELECT air_departure,air_dest FROM mawb WHERE mawb=#{mawb}
+    </select>
+    <select id="se_hawb_place" parameterType="Map" resultType="Map">
+        SELECT air_departure,air_dest,nature FROM hawb WHERE hawb=#{hawb}
+    </select>
+    <select id="se_same" parameterType="Map" resultType="Map">
+        SELECT air_departure,air_dest,to1,by1,to2,by2,to3,by3,currency,currency_rates,excuted_on,place,
+         flight_no,flight_date FROM mawb
+        WHERE mawb=#{mawb}
     </select>
 </mapper>

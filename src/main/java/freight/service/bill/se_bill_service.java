@@ -12,8 +12,10 @@ public interface se_bill_service {
     Map se_ha(Map map);
     Map se_hahis_shipper();
     Map se_hahis_consignee();
+    Map se_ha_place(Map map);
     Map se_ma(Map map);
     Map se_mahis_shipper();
     Map se_mahis_consignee();
     Map se_ma_place(Map map);
+    Map se_same(Map map);
 }

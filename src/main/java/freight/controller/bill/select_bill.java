@@ -58,4 +58,18 @@ public class select_bill {
     public Map se_hahis_consignee(){
         return service.se_hahis_consignee();
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/select/bill/haplace",method = RequestMethod.POST,produces = "application/json")
+    public Map se_ha_place(@RequestBody Map map){
+        return service.se_ha_place(map);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/select/bill/same",method = RequestMethod.POST,produces = "application/json")
+    public Map se_same(@RequestBody Map map){
+        return service.se_same(map);
+    }
+
+
 }
