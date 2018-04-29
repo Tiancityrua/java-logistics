@@ -21,4 +21,10 @@
     <select id="se_detail" parameterType="Map" resultType="freight.DO.Detail">
         SELECT * FROM invoice_detail WHERE invoice_no=#{invoiceNo}
     </select>
+    <select id="se_no1" resultType="java.lang.String">
+        select max(mid(invoice_no,4,12)) from invoice where invoice_no like 'DVI%'
+    </select>
+    <select id="se_no2" resultType="java.lang.String">
+        select max(mid(invoice_no,4,12)) from invoice where invoice_no like 'IVD%'
+    </select>
 </mapper>

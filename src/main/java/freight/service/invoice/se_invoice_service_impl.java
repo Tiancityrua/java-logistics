@@ -42,4 +42,20 @@ public class se_invoice_service_impl implements se_invoice_service {
         result.put("data",list);
         return result;
     }
+
+    @Override
+    public Map se_no() {
+        String no1=dao.se_no1();
+        String no2=dao.se_no2();
+        Long num1=Long.parseLong(no1);
+        num1++;
+        no1=String.valueOf(num1);
+        Long num2=Long.parseLong(no1);
+        num2++;
+        no2=String.valueOf(num2);
+        Map map=new HashMap();
+        map.put("dvi",no1);
+        map.put("ivd",no2);
+        return map;
+    }
 }
