@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="freight.dao.invoice.de_invoice_dao">
     <delete id="de_note" parameterType="java.util.Map">
-        DELETE * FROM deliverynote WHERE hawb=#{hawb} AND type=#{type}
+        DELETE  FROM deliverynote WHERE hawb=#{hawb} AND type=#{type}
     </delete>
     <delete id="de_invoice" parameterType="java.util.Map">
-        DELETE * FROM invoice WHERE invoice_no=#{invoiceNo}
+        DELETE  FROM invoice WHERE invoice_no=#{invoiceNo}
     </delete>
 </mapper>
