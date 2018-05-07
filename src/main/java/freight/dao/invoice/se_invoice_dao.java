@@ -15,6 +15,6 @@ public interface se_invoice_dao {
     List<Map> se_invoice(Map map);
     List<Map> se_delivery(Map map);
     List<Map> se_detail(Map map);
-    String se_no1();
-    String se_no2();
+    String se_no1(String query1);
+    String se_no2(String query2);
 }

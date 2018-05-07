@@ -39,8 +39,8 @@ public class select_invoice {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/select/invoice/no",method = RequestMethod.GET,produces = "application/json")
-    public Map se_no(){
-        return service.se_no();
+    @RequestMapping(value = "/select/invoice/no",method = RequestMethod.POST,produces = "application/json")
+    public Map se_no(@RequestBody Map map){
+        return service.se_no(map);
     }
 }
