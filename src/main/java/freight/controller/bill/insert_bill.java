@@ -21,7 +21,7 @@ public class insert_bill {
     private in_bill_service service;
     @ResponseBody
     @RequestMapping(value = "/insert/bill/mawb",method = RequestMethod.POST,produces = "application/json")
-    public Message in_ma(@RequestBody Mawb mawb, HttpServletResponse response){
+    public Message in_ma(@RequestBody Mawb mawb){
         String shipper=mawb.getShipper();
         String consignee=mawb.getConsignee();
         service.in_mahis(shipper,consignee);

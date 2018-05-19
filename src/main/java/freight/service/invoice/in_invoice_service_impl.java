@@ -29,7 +29,7 @@ public class in_invoice_service_impl implements in_invoice_service {
             return msg;
         }
         else {
-            Message msg=new Message("error","货单插入失败，同一分单号只能有两种类型货单");
+            Message msg=new Message("error","货单插入失败，重复插入相同数据");
             return msg;
         }
     }

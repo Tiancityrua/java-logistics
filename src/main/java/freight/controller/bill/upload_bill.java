@@ -30,8 +30,10 @@ public class upload_bill {
         File newfile = new File(path);
         try {
             file.transferTo(newfile);
-            ITesseract tesseract=new Tesseract();
+            Tesseract tesseract=new Tesseract();
             tesseract.setPageSegMode(4);
+            tesseract.setDatapath(request.getSession().getServletContext().getRealPath("/") );
+            tesseract.setLanguage("eng");
             String result=tesseract.doOCR(newfile);
             String arr[]=result.split("\n\n");
             Map resultmap=new HashMap();
@@ -78,8 +80,10 @@ public class upload_bill {
         File newfile = new File(path);
         try {
             file.transferTo(newfile);
-            ITesseract tesseract=new Tesseract();
+            Tesseract tesseract=new Tesseract();
             tesseract.setPageSegMode(4);
+            tesseract.setDatapath(request.getSession().getServletContext().getRealPath("/") );
+            tesseract.setLanguage("eng");
             String result=tesseract.doOCR(newfile);
             String arr[]=result.split("\n\n");
             Map resultmap=new HashMap();
