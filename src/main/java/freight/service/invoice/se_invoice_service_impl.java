@@ -47,7 +47,7 @@ public class se_invoice_service_impl implements se_invoice_service {
     public Map se_no(Map map) {
         Map returnmap=new HashMap();
         String time= (String) map.get("time");
-        String query1="DVI"+time+"%";
+        String query1="DVI518"+time+"%";
         String no1=dao.se_no1(query1);
         if(no1!=null){
             Long num1=Long.parseLong(no1);
@@ -59,17 +59,17 @@ public class se_invoice_service_impl implements se_invoice_service {
             String result1=time+"001";
             returnmap.put("dvi",result1);
         }
-        String query2="IVD"+time+"%";
+        String query2="INV518"+time+"%";
         String no2=dao.se_no2(query2);
         if(no2!=null){
             Long num2=Long.parseLong(no2);
             num2++;
             String result2=String.valueOf(num2);
-            returnmap.put("ivd",result2);
+            returnmap.put("inv",result2);
         }
         else {
             String result2=time+"001";
-            returnmap.put("ivd",result2);
+            returnmap.put("inv",result2);
         }
         return returnmap;
     }

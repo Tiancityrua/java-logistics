@@ -5,7 +5,7 @@
         INSERT IGNORE INTO deliverynote VALUES(#{date},#{hawb},#{pieces},#{weight},#{address},#{name},#{signed},#{dated},#{type})
     </insert>
     <insert id="in_invoice" parameterType="freight.DO.Invoice">
-        INSERT IGNORE INTO invoice VALUES (#{invoiceNo},#{date},#{terms},#{invoiceTo},#{billLaden},#{origin},#{dstn},#{nature},#{total})
+        INSERT IGNORE INTO invoice(invoice_no,date,terms,invoice_to,bill_laden,origin,dstn,nature,total,type,pay_date) VALUES (#{invoiceNo},#{date},#{terms},#{invoiceTo},#{billLaden},#{origin},#{dstn},#{nature},#{total},#{type},#{payDate})
     </insert>
     <insert id="in_detail" parameterType="java.util.List">
         INSERT INTO invoice_detail(invoice_no,description,amount) VALUES

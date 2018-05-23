@@ -15,6 +15,8 @@ public class Invoice {
     private String dstn;
     private String nature;
     private String total;
+    private String type;
+    private String payDate;
 
     public String getInvoiceNo() {
         return invoiceNo;
@@ -86,5 +88,21 @@ public class Invoice {
 
     public void setTotal(String total) {
         this.total = total;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getPayDate() {
+        return payDate;
+    }
+
+    public void setPayDate(String payDate) {
+        this.payDate = payDate;
     }
 }

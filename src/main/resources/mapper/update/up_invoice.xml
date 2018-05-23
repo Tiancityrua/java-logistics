@@ -8,7 +8,7 @@
 
     <update id="up_invoice" parameterType="freight.DO.Invoice">
         UPDATE invoice SET date=#{date},terms=#{terms},invoice_to=#{invoiceTo},bill_laden=#{billLaden},origin=#{origin},
-        dstn=#{dstn},nature=#{nature},total=#{total} WHERE invoice_no=#{invoiceNo}
+        dstn=#{dstn},nature=#{nature},total=#{total},type=#{type},pay_date=#{payDate} WHERE invoice_no=#{invoiceNo}
     </update>
 
     <update id="up_detail" parameterType="java.util.List">
