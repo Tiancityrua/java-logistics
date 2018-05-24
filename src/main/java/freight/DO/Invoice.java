@@ -6,6 +6,7 @@ package freight.DO;
  * ====================================================================<br>
  */
 public class Invoice {
+    private String no;
     private String invoiceNo;
     private String date;
     private String terms;
@@ -17,6 +18,14 @@ public class Invoice {
     private String total;
     private String type;
     private String payDate;
+
+    public String getNo() {
+        return no;
+    }
+
+    public void setNo(String no) {
+        this.no = no;
+    }
 
     public String getInvoiceNo() {
         return invoiceNo;

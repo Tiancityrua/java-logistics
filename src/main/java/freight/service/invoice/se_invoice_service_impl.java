@@ -1,9 +1,12 @@
 package freight.service.invoice;
 
+import freight.DO.Detail;
+import freight.DO.Invoice;
 import freight.dao.invoice.se_invoice_dao;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,5 +75,41 @@ public class se_invoice_service_impl implements se_invoice_service {
             returnmap.put("inv",result2);
         }
         return returnmap;
+    }
+
+    @Override
+    public List<Map> se_invoice_all() {
+        List<Map> resultlist = new ArrayList<Map>();
+        List<Invoice> alllist=dao.se_invoice_all();
+        for (Invoice invoice:alllist){
+            String no=invoice.getInvoiceNo();
+            String total=invoice.getTotal();
+            Map resultmap=new HashMap();
+            String net=dao.se_detail_all(no);
+            if (net!=""&&net!=null){
+                resultmap.put("Net",net);
+                String vat=dao.se_detail_vat(no);
+                resultmap.put("VAT",vat);
+            }
+            else{
+                resultmap.put("VAT","0");
+                resultmap.put("Net",total);
+            }
+            String id=invoice.getNo();
+            String type=invoice.getType();
+            String date=invoice.getDate();
+            String name=invoice.getInvoiceTo();
+            String invoiceno=invoice.getInvoiceNo();
+            String ref=invoice.getBillLaden();
+            resultmap.put("id",id);
+            resultmap.put("type",type);
+            resultmap.put("name",name);
+            resultmap.put("date",date);
+            resultmap.put("invoiceno",invoiceno);
+            resultmap.put("ref",ref);
+            resultmap.put("total",total);
+            resultlist.add(resultmap);
+        }
+        return resultlist;
     }
 }

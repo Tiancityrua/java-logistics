@@ -20,4 +20,7 @@ public interface se_invoice_dao {
     List<Detail> se_detail(Map map);
     String se_no1(String query1);
     String se_no2(String query2);
+    List<Invoice> se_invoice_all();
+    String se_detail_all(String string);
+    String se_detail_vat(String string);
 }

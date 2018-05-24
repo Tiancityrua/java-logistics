@@ -68,7 +68,7 @@ public class print_invoice {
                 cell11.setCellValue(list.get(i).getAmount());
             }
             response.setHeader("Content-Disposition", "attachment;Filename=" + URLEncoder.encode("invoice.xlsx", "UTF-8"));
-            response.setContentType("application/vnd.ms-excel; charset=utf-8") ;
+            response.setContentType("application/vnd.ms-excel; charset=utf-8");
             OutputStream outputStream = response.getOutputStream();
             wb.write(outputStream);
             outputStream.flush();
