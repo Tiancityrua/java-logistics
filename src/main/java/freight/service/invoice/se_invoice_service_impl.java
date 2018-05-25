@@ -78,9 +78,9 @@ public class se_invoice_service_impl implements se_invoice_service {
     }
 
     @Override
-    public List<Map> se_invoice_all() {
+    public List<Map> se_invoice_all(Map map) {
         List<Map> resultlist = new ArrayList<Map>();
-        List<Invoice> alllist=dao.se_invoice_all();
+        List<Invoice> alllist=dao.se_invoice_all(map);
         for (Invoice invoice:alllist){
             String no=invoice.getInvoiceNo();
             String total=invoice.getTotal();

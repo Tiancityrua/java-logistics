@@ -30,8 +30,10 @@
     <select id="se_no2" parameterType="java.lang.String" resultType="java.lang.String">
         select max(mid(invoice_no,4,10)) from invoice where invoice_no like #{query2}
     </select>
-    <select id="se_invoice_all" resultType="freight.DO.Invoice">
+    <select id="se_invoice_all" parameterType="Map" resultType="freight.DO.Invoice">
       SELECT * FROM invoice WHERE type='purchases'
+      <if test="date1!='' and date1!=null">AND date &gt;#{date1}</if>
+        <if test="date2!='' and date2!=null">AND date &lt;#{date2}</if>
     </select>
     <select id="se_detail_all" parameterType="java.lang.String" resultType="java.lang.String">
       SELECT amount FROM invoice_detail WHERE invoice_no=#{invoiceNo} AND description='Net Amount'

@@ -6,6 +6,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +15,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,13 +25,21 @@ import java.util.Map;
  * ====================================================================<br>
  */
 @Controller
-public class statistics_invoice {
+public class Business_invoice {
     @Resource
     private se_invoice_service service;
     @ResponseBody
-    @RequestMapping(value = "/statistics/invoice/invoice",method = RequestMethod.GET)
-    public void st_invoice(HttpServletResponse response){
-        List<Map> list=service.se_invoice_all();
+    @RequestMapping(value = "/business/invoice/invoice",method = RequestMethod.POST)
+    public void st_invoice(@RequestBody Map map,HttpServletResponse response){
+        String year= (String) map.get("year");
+        Map querymap=new HashMap();
+        if(year!=null&year!=""){
+            String date1=year+"-01-01";
+            String date2=year+"-12-31";
+            querymap.put("date1",date1);
+            querymap.put("date2",date2);
+        }
+        List<Map> list=service.se_invoice_all(querymap);
         HSSFWorkbook wb=new HSSFWorkbook();
         HSSFSheet sheet=wb.createSheet("sheet1");
         HSSFRow row=sheet.createRow(0);
@@ -55,7 +65,7 @@ public class statistics_invoice {
         cell9.setCellValue("Net");
         cell10.setCellValue("VAT");
         cell11.setCellValue("Total");
-        for (int i=1;i<list.size();i++){
+        for (int i=1;i<list.size()+1;i++){
             HSSFRow row1=sheet.createRow(i);
             HSSFCell Cell1=row1.createCell(0);
             Cell1.setCellValue((String) list.get(i-1).get("id"));
