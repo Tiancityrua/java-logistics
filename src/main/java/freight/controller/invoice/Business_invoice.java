@@ -101,4 +101,34 @@ public class Business_invoice {
             e.printStackTrace();
         }
     }
+    @ResponseBody
+    @RequestMapping(value = "/business/invoice/debtors",method = RequestMethod.POST)
+    public List deb_invoice(@RequestBody Map map,HttpServletResponse response){
+        List list=service.se_debtors(map);
+        HSSFWorkbook wb=new HSSFWorkbook();
+        HSSFSheet sheet=wb.createSheet("sheet1");
+        HSSFRow Row=sheet.createRow(0);
+        HSSFCell Cell1=Row.createCell(0);
+        HSSFCell Cell2=Row.createCell(1);
+        Cell1.setCellValue("Date");
+        Cell2.setCellValue((String) map.get("time"));
+        HSSFRow Row1=sheet.createRow(1);
+        HSSFCell Cell3=Row1.createCell(0);
+        HSSFCell Cell4=Row1.createCell(1);
+        HSSFCell Cell5=Row1.createCell(2);
+        HSSFCell Cell6=Row1.createCell(3);
+        HSSFCell Cell7=Row1.createCell(4);
+        HSSFCell Cell8=Row1.createCell(5);
+        HSSFCell Cell9=Row1.createCell(6);
+        HSSFCell Cell10=Row1.createCell(7);
+        HSSFCell Cell11=Row1.createCell(8);
+        HSSFCell Cell12=Row1.createCell(9);
+        HSSFCell Cell13=Row1.createCell(10);
+        Cell3.setCellValue("0");
+        Cell4.setCellValue("Date");
+        Cell5.setCellValue("Reference");
+        Cell6.setCellValue("Total");
+        
+        return service.se_debtors(map);
+    }
 }

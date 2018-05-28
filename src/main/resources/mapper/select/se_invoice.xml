@@ -41,4 +41,26 @@
     <select id="se_detail_vat" parameterType="java.lang.String" resultType="java.lang.String">
       SELECT amount FROM invoice_detail WHERE invoice_no=#{invoiceNo} AND description LIKE 'VAT%'
     </select>
+    <select id="se_debtors_name" resultType="java.lang.String">
+      SELECT DISTINCT invoice_to FROM invoice WHERE type='purchases' AND pay_date is NULL ORDER BY invoice_to
+    </select>
+    <select id="se_debtors_detail30" parameterType="java.util.Map" resultType="java.util.Map">
+        select invoice_no,total,date,date_add(date,INTERVAL 30 DAY) as duetime from invoice where type='purchases'
+        and pay_date is null and date_add(date,INTERVAL 30 DAY)&gt;=#{time} and invoice_to=#{invoiceTo}
+    </select>
+    <select id="se_debtors_detail60" parameterType="java.util.Map" resultType="java.util.Map">
+        select invoice_no,total,date,date_add(date,INTERVAL 30 DAY) as duetime from invoice where type='purchases'
+        and pay_date is null and date_add(date,INTERVAL 60 DAY)&gt;=#{time} and date_add(date,INTERVAL 30 DAY) &lt;#{time}
+        and invoice_to=#{invoiceTo}
+    </select>
+    <select id="se_debtors_detail90" parameterType="java.util.Map" resultType="java.util.Map">
+        select invoice_no,total,date,date_add(date,INTERVAL 30 DAY) as duetime from invoice where type='purchases'
+        and pay_date is null and date_add(date,INTERVAL 90 DAY)&gt;=#{time} and date_add(date,INTERVAL 60 DAY) &lt;#{time}
+        and invoice_to=#{invoiceTo}
+    </select>
+    <select id="se_debtors_detail120" parameterType="java.util.Map" resultType="java.util.Map">
+        select invoice_no,total,date,date_add(date,INTERVAL 30 DAY) as duetime from invoice where type='purchases'
+        and pay_date is null and date_add(date,INTERVAL 120 DAY)&gt;=#{time} and date_add(date,INTERVAL 90 DAY) &lt;#{time}
+        and invoice_to=#{invoiceTo}
+    </select>
 </mapper>

@@ -23,4 +23,9 @@ public interface se_invoice_dao {
     List<Invoice> se_invoice_all(Map map);
     String se_detail_all(String string);
     String se_detail_vat(String string);
+    List<String> se_debtors_name();
+    List<Map> se_debtors_detail30(Map map);
+    List<Map> se_debtors_detail60(Map map);
+    List<Map> se_debtors_detail90(Map map);
+    List<Map> se_debtors_detail120(Map map);
 }

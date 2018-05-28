@@ -59,7 +59,7 @@ public class se_invoice_service_impl implements se_invoice_service {
             returnmap.put("dvi",result1);
         }
         else {
-            String result1=time+"001";
+            String result1="518"+time+"001";
             returnmap.put("dvi",result1);
         }
         String query2="INV518"+time+"%";
@@ -71,7 +71,7 @@ public class se_invoice_service_impl implements se_invoice_service {
             returnmap.put("inv",result2);
         }
         else {
-            String result2=time+"001";
+            String result2="518"+time+"001";
             returnmap.put("inv",result2);
         }
         return returnmap;
@@ -112,4 +112,28 @@ public class se_invoice_service_impl implements se_invoice_service {
         }
         return resultlist;
     }
+
+    public List se_debtors(Map getmap){
+        String time= (String) getmap.get("time");
+        List<String> namelist=dao.se_debtors_name();
+        List returnlist=new ArrayList<Map>();
+        for (String name:namelist){
+            Map map=new HashMap();
+            map.put("time",time);
+            map.put("invoiceTo",name);
+            List<Map> list1=dao.se_debtors_detail30(map);
+            List<Map> list2=dao.se_debtors_detail60(map);
+            List<Map> list3=dao.se_debtors_detail90(map);
+            List<Map> list4=dao.se_debtors_detail120(map);
+            Map resultmap=new HashMap();
+            resultmap.put("30",list1);
+            resultmap.put("60",list2);
+            resultmap.put("90",list3);
+            resultmap.put("120",list4);
+            resultmap.put("name",name);
+            returnlist.add(resultmap);
+        }
+        return returnlist;
+    }
+
 }
