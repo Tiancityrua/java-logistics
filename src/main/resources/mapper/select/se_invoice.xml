@@ -63,4 +63,8 @@
         and pay_date is null and date_add(date,INTERVAL 120 DAY)&gt;=#{time} and date_add(date,INTERVAL 90 DAY) &lt;#{time}
         and invoice_to=#{invoiceTo}
     </select>
+    <select id="se_debtors_detail_120" parameterType="java.util.Map" resultType="java.util.Map">
+        select invoice_no,total,date,date_add(date,INTERVAL 30 DAY) as duetime from invoice where type='purchases'
+        and pay_date is null and date_add(date,INTERVAL 120 DAY)&lt;=#{time} and invoice_to=#{invoiceTo}
+    </select>
 </mapper>

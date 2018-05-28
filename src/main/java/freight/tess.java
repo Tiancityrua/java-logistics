@@ -2,6 +2,7 @@ package freight;
 
 
 
+import freight.util.other.countnum;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -11,6 +12,10 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>创建时间: 2018/5/5</p>
@@ -19,24 +24,36 @@ import java.io.*;
  */
 public class tess {
     public static void  main(String[] args) throws IOException {
-        File ex=new File("src/main/invoice.xlsx");
-        InputStream in=new FileInputStream(ex);
-        XSSFWorkbook wb=new XSSFWorkbook(in);
-        XSSFSheet sheet=wb.getSheetAt(0);
-        XSSFCell cell1 = sheet.getRow(8).getCell(2);
-        cell1.setCellValue("qqqqqqqq");
-        XSSFCell cell2=sheet.getRow(8).getCell(6);
-        cell2.setCellValue("Invoice Number:"+"1212121");
-        XSSFCell cell3=sheet.getRow(9).getCell(6);
-        cell3.setCellValue("Invoice Number:"+"11/22/2019");
-        XSSFCell cell4=sheet.getRow(13).getCell(1);
-        cell4.setCellValue("000-00009999");
-        XSSFCell cell5=sheet.getRow(13).getCell(4);
-        cell5.setCellValue("sss");
-        XSSFCell cell6=sheet.getRow(13).getCell(6);
-        cell6.setCellValue("hhh");
-        FileOutputStream out=new FileOutputStream("src/main/invoice1.xlsx");
-        wb.write(out);
-        out.close();
+        List returnlist=new ArrayList();
+        for(int i=0;i<3;i++) {
+            List list1 = new ArrayList();
+            Map map1 = new HashMap();
+            map1.put("111", "111");
+            map1.put("232", "222");
+            list1.add(map1);
+            List list2 = new ArrayList();
+            Map map2 = new HashMap();
+            map2.put("111", "111");
+            map2.put("232", "222");
+            list2.add(map2);
+            List list3 = new ArrayList();
+            Map map3 = new HashMap();
+            map3.put("111", "111");
+            map3.put("232", "222");
+            list3.add(map3);
+            List list4 = new ArrayList();
+            Map map4 = new HashMap();
+            map4.put("111", "111");
+            map4.put("232", "222");
+            list4.add(map4);
+            Map result = new HashMap();
+            result.put("30", list1);
+            result.put("60", list2);
+            result.put("90", list3);
+            result.put("120", list4);
+            result.put("name", "wo");
+            returnlist.add(result);
+        }
+        countnum.count(0,returnlist);
     }
 }

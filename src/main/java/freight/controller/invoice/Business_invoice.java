@@ -1,6 +1,7 @@
 package freight.controller.invoice;
 
 import freight.service.invoice.se_invoice_service;
+import freight.util.other.countnum;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -103,8 +104,8 @@ public class Business_invoice {
     }
     @ResponseBody
     @RequestMapping(value = "/business/invoice/debtors",method = RequestMethod.POST)
-    public List deb_invoice(@RequestBody Map map,HttpServletResponse response){
-        List list=service.se_debtors(map);
+    public void deb_invoice(@RequestBody Map map,HttpServletResponse response){
+        List<Map> resultlist=service.se_debtors(map);
         HSSFWorkbook wb=new HSSFWorkbook();
         HSSFSheet sheet=wb.createSheet("sheet1");
         HSSFRow Row=sheet.createRow(0);
@@ -128,7 +129,90 @@ public class Business_invoice {
         Cell4.setCellValue("Date");
         Cell5.setCellValue("Reference");
         Cell6.setCellValue("Total");
-        
-        return service.se_debtors(map);
+        Cell7.setCellValue("Due Date");
+        Cell8.setCellValue("O/S Amt");
+        Cell9.setCellValue("< 30 days");
+        Cell10.setCellValue("< 60 days");
+        Cell11.setCellValue("< 90 days");
+        Cell12.setCellValue("< 120 days");
+        Cell13.setCellValue("Older");
+        for(int i=0;i<resultlist.size();i++){
+            int count= countnum.count(i,resultlist);
+            Map resultmap=resultlist.get(i);
+            String name=resultmap.get("name")+",Terms:30 days - OVERDUE";
+            HSSFCell cell=sheet.createRow(count).createCell(0);
+            cell.setCellValue(name);
+            List<Map> list1= (List<Map>) resultmap.get("120");
+            List<Map> list2= (List<Map>) resultmap.get("90");
+            List<Map> list3= (List<Map>) resultmap.get("60");
+            List<Map> list4= (List<Map>) resultmap.get("30");
+            for (int j=0;j<list1.size();j++){
+                HSSFCell cell1=sheet.createRow(count+1).createCell(1);
+                HSSFCell cell2=sheet.createRow(count+1).createCell(2);
+                HSSFCell cell3=sheet.createRow(count+1).createCell(3);
+                HSSFCell cell4=sheet.createRow(count+1).createCell(4);
+                HSSFCell cell5=sheet.createRow(count+1).createCell(5);
+                HSSFCell cell6=sheet.createRow(count+1).createCell(9);
+                cell1.setCellValue(list1.get(j).get("date").toString());
+                cell2.setCellValue((String) list1.get(j).get("invoice_no"));
+                cell3.setCellValue((Double) list1.get(j).get("total"));
+                cell4.setCellValue(list1.get(j).get("duetime").toString());
+                cell5.setCellValue((Double) list1.get(j).get("total"));
+                cell6.setCellValue((Double) list1.get(j).get("total"));
+            }
+            for (int j=0;j<list2.size();j++){
+                HSSFCell cell1=sheet.createRow(list1.size()+count+1).createCell(1);
+                HSSFCell cell2=sheet.createRow(list1.size()+count+1).createCell(2);
+                HSSFCell cell3=sheet.createRow(list1.size()+count+1).createCell(3);
+                HSSFCell cell4=sheet.createRow(list1.size()+count+1).createCell(4);
+                HSSFCell cell5=sheet.createRow(list1.size()+count+1).createCell(5);
+                HSSFCell cell6=sheet.createRow(list1.size()+count+1).createCell(8);
+                cell1.setCellValue(list2.get(j).get("date").toString());
+                cell2.setCellValue((String) list2.get(j).get("invoice_no"));
+                cell3.setCellValue((Double) list2.get(j).get("total"));
+                cell4.setCellValue(list2.get(j).get("duetime").toString());
+                cell5.setCellValue((Double) list2.get(j).get("total"));
+                cell6.setCellValue((Double) list2.get(j).get("total"));
+            }
+            for (int j=0;j<list3.size();j++){
+                HSSFCell cell1=sheet.createRow(list1.size()+list2.size()+count+1).createCell(1);
+                HSSFCell cell2=sheet.createRow(list1.size()+list2.size()+count+1).createCell(2);
+                HSSFCell cell3=sheet.createRow(list1.size()+list2.size()+count+1).createCell(3);
+                HSSFCell cell4=sheet.createRow(list1.size()+list2.size()+count+1).createCell(4);
+                HSSFCell cell5=sheet.createRow(list1.size()+list2.size()+count+1).createCell(5);
+                HSSFCell cell6=sheet.createRow(list1.size()+list2.size()+count+1).createCell(7);
+                cell1.setCellValue(list3.get(j).get("date").toString());
+                cell2.setCellValue((String) list3.get(j).get("invoice_no"));
+                cell3.setCellValue((Double) list3.get(j).get("total"));
+                cell4.setCellValue(list3.get(j).get("duetime").toString());
+                cell5.setCellValue((Double) list3.get(j).get("total"));
+                cell6.setCellValue((Double) list3.get(j).get("total"));
+            }
+            for (int j=0;j<list4.size();j++) {
+                HSSFCell cell1 = sheet.createRow(list1.size() + list2.size() + list3.size() + count + 1).createCell(1);
+                HSSFCell cell2 = sheet.createRow(list1.size() + list2.size() + list3.size() + count + 1).createCell(2);
+                HSSFCell cell3 = sheet.createRow(list1.size() + list2.size() + list3.size() + count + 1).createCell(3);
+                HSSFCell cell4 = sheet.createRow(list1.size() + list2.size() + list3.size() + count + 1).createCell(4);
+                HSSFCell cell5 = sheet.createRow(list1.size() + list2.size() + list3.size() + count + 1).createCell(5);
+                HSSFCell cell6 = sheet.createRow(list1.size() + list2.size() + list3.size() + count + 1).createCell(6);
+                cell1.setCellValue(list4.get(j).get("date").toString());
+                cell2.setCellValue((String) list4.get(j).get("invoice_no"));
+                cell3.setCellValue((Double) list4.get(j).get("total"));
+                cell4.setCellValue(list4.get(j).get("duetime").toString());
+                cell5.setCellValue((Double) list4.get(j).get("total"));
+                cell6.setCellValue((Double) list4.get(j).get("total"));
+            }
+        }
+        response.setContentType("application/vnd.ms-excel; charset=utf-8");
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+            wb.write(outputStream);
+            outputStream.flush();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
