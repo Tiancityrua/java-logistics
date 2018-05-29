@@ -29,4 +29,10 @@ public interface se_invoice_dao {
     List<Map> se_debtors_detail90(Map map);
     List<Map> se_debtors_detail120(Map map);
     List<Map> se_debtors_detail_120(Map map);
+    List<String> se_creditors_name();
+    List<Map> se_creditors_detail30(Map map);
+    List<Map> se_creditors_detail60(Map map);
+    List<Map> se_creditors_detail90(Map map);
+    List<Map> se_creditors_detail120(Map map);
+    List<Map> se_creditors_detail_120(Map map);
 }

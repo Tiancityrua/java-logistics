@@ -67,4 +67,30 @@
         select invoice_no,total,date,date_add(date,INTERVAL 30 DAY) as duetime from invoice where type='purchases'
         and pay_date is null and date_add(date,INTERVAL 120 DAY)&lt;=#{time} and invoice_to=#{invoiceTo}
     </select>
+    <select id="se_creditors_name" resultType="java.lang.String">
+        SELECT DISTINCT invoice_to FROM invoice WHERE type='sales' AND pay_date is NULL ORDER BY invoice_to
+    </select>
+    <select id="se_creditors_detail30" parameterType="java.util.Map" resultType="java.util.Map">
+        select invoice_no,total,date,date_add(date,INTERVAL 30 DAY) as duetime from invoice where type='sales'
+        and pay_date is null and date_add(date,INTERVAL 30 DAY)&gt;=#{time} and invoice_to=#{invoiceTo}
+    </select>
+    <select id="se_creditors_detail60" parameterType="java.util.Map" resultType="java.util.Map">
+        select invoice_no,total,date,date_add(date,INTERVAL 30 DAY) as duetime from invoice where type='sales'
+        and pay_date is null and date_add(date,INTERVAL 60 DAY)&gt;=#{time} and date_add(date,INTERVAL 30 DAY) &lt;#{time}
+        and invoice_to=#{invoiceTo}
+    </select>
+    <select id="se_creditors_detail90" parameterType="java.util.Map" resultType="java.util.Map">
+        select invoice_no,total,date,date_add(date,INTERVAL 30 DAY) as duetime from invoice where type='sales'
+        and pay_date is null and date_add(date,INTERVAL 90 DAY)&gt;=#{time} and date_add(date,INTERVAL 60 DAY) &lt;#{time}
+        and invoice_to=#{invoiceTo}
+    </select>
+    <select id="se_creditors_detail120" parameterType="java.util.Map" resultType="java.util.Map">
+        select invoice_no,total,date,date_add(date,INTERVAL 30 DAY) as duetime from invoice where type='sales'
+        and pay_date is null and date_add(date,INTERVAL 120 DAY)&gt;=#{time} and date_add(date,INTERVAL 90 DAY) &lt;#{time}
+        and invoice_to=#{invoiceTo}
+    </select>
+    <select id="se_creditors_detail_120" parameterType="java.util.Map" resultType="java.util.Map">
+        select invoice_no,total,date,date_add(date,INTERVAL 30 DAY) as duetime from invoice where type='sales'
+        and pay_date is null and date_add(date,INTERVAL 120 DAY)&lt;=#{time} and invoice_to=#{invoiceTo}
+    </select>
 </mapper>

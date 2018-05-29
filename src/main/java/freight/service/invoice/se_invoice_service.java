@@ -15,4 +15,5 @@ public interface se_invoice_service {
     Map se_no(Map map);
     List<Map> se_invoice_all(Map map);
     List se_debtors(Map map);
+    List se_creditors(Map map);
 }
