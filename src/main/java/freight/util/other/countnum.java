@@ -24,9 +24,11 @@ public class countnum {
                 for(int l=0;l<((List)(list.get(j).get("120"))).size();l++){
                     count++;
                 }
+                for(int l=0;l<((List)(list.get(j).get("older"))).size();l++){
                 count++;
+                }
+                count=count+2;
             }
-        System.out.print(count);
         return count;
     }
 }

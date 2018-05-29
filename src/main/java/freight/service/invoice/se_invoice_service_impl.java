@@ -125,11 +125,13 @@ public class se_invoice_service_impl implements se_invoice_service {
             List<Map> list2=dao.se_debtors_detail60(map);
             List<Map> list3=dao.se_debtors_detail90(map);
             List<Map> list4=dao.se_debtors_detail120(map);
+            List<Map> list5=dao.se_debtors_detail_120(map);
             Map resultmap=new HashMap();
             resultmap.put("30",list1);
             resultmap.put("60",list2);
             resultmap.put("90",list3);
             resultmap.put("120",list4);
+            resultmap.put("older",list5);
             resultmap.put("name",name);
             returnlist.add(resultmap);
         }
