@@ -164,5 +164,35 @@ public class se_invoice_service_impl implements se_invoice_service {
         return returnlist;
     }
 
+    @Override
+    public List<Map> se_year_total() {
+        List<Map> yearmap=dao.se_year_total();
+        return yearmap;
+    }
+
+    @Override
+    public List<Map> se_month_total(Map map) {
+        List<Map> monthmap=dao.se_month_total(map);
+        return monthmap;
+    }
+
+    @Override
+    public List<Map> se_name_most(Map map) {
+        List<Map> namemap=dao.se_name_most(map);
+        return namemap;
+    }
+
+    @Override
+    public List<Map> se_origin(Map map) {
+        List origin=dao.se_origin(map);
+        return origin;
+    }
+
+    @Override
+    public List<Map> se_dstn(Map map) {
+        List dstn=dao.se_dstn(map);
+        return dstn;
+    }
+
 
 }

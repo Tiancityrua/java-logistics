@@ -35,4 +35,9 @@ public interface se_invoice_dao {
     List<Map> se_creditors_detail90(Map map);
     List<Map> se_creditors_detail120(Map map);
     List<Map> se_creditors_detail_120(Map map);
+    List se_year_total();
+    List se_month_total(Map map);
+    List se_name_most(Map map);
+    List se_dstn(Map map);
+    List se_origin(Map map);
 }

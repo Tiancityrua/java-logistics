@@ -397,4 +397,31 @@ public class Business_invoice {
             e.printStackTrace();
         }
     }
+    @ResponseBody
+    @RequestMapping(value = "/business/invoice/month",method = RequestMethod.POST)
+    public List<Map> month_invoice(@RequestBody Map map){
+        if(map.size()==0) {
+            return service.se_year_total();
+        }
+        else {
+            return service.se_month_total(map);
+        }
+    }
+    @ResponseBody
+    @RequestMapping(value = "/business/invoice/name",method = RequestMethod.POST)
+    public List<Map> name_invoice(@RequestBody Map map){
+        return service.se_name_most(map);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/business/invoice/origin",method = RequestMethod.POST)
+    public List<Map> origin_invoice(@RequestBody Map map){
+        return service.se_origin(map);
+    }
+    @ResponseBody
+    @RequestMapping(value = "/business/invoice/dstn",method = RequestMethod.POST)
+    public List<Map> dstn_invoice(@RequestBody Map map){
+        return service.se_dstn(map);
+    }
+
 }

@@ -93,4 +93,26 @@
         select invoice_no,total,date,date_add(date,INTERVAL 30 DAY) as duetime from invoice where type='sales'
         and pay_date is null and date_add(date,INTERVAL 120 DAY)&lt;=#{time} and invoice_to=#{invoiceTo}
     </select>
+    <select id="se_year_total" resultType="java.util.Map">
+         select year(date) as year,sum(total) as sum from invoice where type='purchases' group by year(date)
+    </select>
+    <select id="se_month_total" parameterType="java.util.Map" resultType="java.util.Map">
+         select month(date) as month,sum(total) as sum from invoice where
+         year(date)=#{year} and type='purchases' group by month(date)
+    </select>
+    <select id="se_name_most" parameterType="java.util.Map" resultType="java.util.Map">
+            select invoice_to as name,count(invoice_to) as num from invoice where type='purchases'
+        <if test="year!=null and year!=''">AND year(date) =#{year}</if>
+        group by invoice_to order by num DESC limit 5
+    </select>
+    <select id="se_dstn" parameterType="java.util.Map" resultType="java.util.Map">
+      select  dstn,count(dstn) as num from invoice where type='purchases'
+        <if test="year!=null and year!=''">AND year(date) =#{year}</if>
+    group by dstn order by num DESC limit 5
+    </select>
+    <select id="se_origin" parameterType="java.util.Map" resultType="java.util.Map">
+        select  origin,count(origin) as num from invoice where type='purchases'
+        <if test="year!=null and year!=''">AND year(date) =#{year}</if>
+        group by origin order by num DESC limit 5
+    </select>
 </mapper>
