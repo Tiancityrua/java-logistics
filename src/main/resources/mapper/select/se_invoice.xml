@@ -101,18 +101,18 @@
          year(date)=#{year} and type='purchases' group by month(date)
     </select>
     <select id="se_name_most" parameterType="java.util.Map" resultType="java.util.Map">
-            select invoice_to as name,count(invoice_to) as num from invoice where type='purchases'
+            select invoice_to as name,count(invoice_to) as value from invoice where type='purchases'
         <if test="year!=null and year!=''">AND year(date) =#{year}</if>
-        group by invoice_to order by num DESC limit 5
+        group by invoice_to order by value DESC limit 5
     </select>
     <select id="se_dstn" parameterType="java.util.Map" resultType="java.util.Map">
-      select  dstn,count(dstn) as num from invoice where type='purchases'
+      select  dstn as name,count(dstn) as value from invoice where type='purchases'
         <if test="year!=null and year!=''">AND year(date) =#{year}</if>
-    group by dstn order by num DESC limit 5
+    group by dstn order by value DESC limit 5
     </select>
     <select id="se_origin" parameterType="java.util.Map" resultType="java.util.Map">
-        select  origin,count(origin) as num from invoice where type='purchases'
+        select  origin as name,count(origin) as value from invoice where type='purchases'
         <if test="year!=null and year!=''">AND year(date) =#{year}</if>
-        group by origin order by num DESC limit 5
+        group by origin order by value DESC limit 5
     </select>
 </mapper>
